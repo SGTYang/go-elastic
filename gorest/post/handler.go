@@ -4,15 +4,13 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
-
-	"github.com/SGTYang/gorest/elasticsearch/"
 )
 
 type Handler struct {
 	service service
 }
 
-func NewHandler(storage post_storage.PostStorer) Handler {
+func NewHandler(storage storage.PostStorer) Handler {
 	return Handler{
 		service: service{storage: storage},
 	}
