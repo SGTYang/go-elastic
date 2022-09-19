@@ -12,11 +12,9 @@ type ElasticSearch struct {
 	alias  string
 }
 
-func New(addresses []string, username string, password string) (*ElasticSearch, error) {
+func New(addresses []string) (*ElasticSearch, error) {
 	cfg := elasticsearch.Config{
 		Addresses: addresses,
-		Username:  username,
-		Password:  password,
 	}
 	es, err := elasticsearch.NewClient(cfg)
 	if err != nil {

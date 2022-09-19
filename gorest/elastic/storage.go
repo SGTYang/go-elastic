@@ -10,18 +10,17 @@ import (
 	"github.com/elastic/go-elasticsearch/v8/esapi"
 )
 
+var _ PostStorer = PostStorage{}
+
 type PostStorer interface {
 	Insert(ctx context.Context, post Post) error
-	Update(ctx context.Context, post Post) error
-	Delete(ctx context.Context, id string) error
-	FindOne(ctx context.Context, id string) (Post, error)
 }
 
 type Post struct {
 	ID        string     `json:"id"`
 	Title     string     `json:"title"`
 	Text      string     `json:"text"`
-	Tags      string     `json:"tags"`
+	Tags      []string   `json:"tags"`
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 }
 
@@ -33,6 +32,7 @@ type PostStorage struct {
 func NewPostStorage(elastic ElasticSearch) (PostStorage, error) {
 	return PostStorage{
 		elastic: elastic,
+		timeout: time.Second * 10,
 	}, nil
 }
 
