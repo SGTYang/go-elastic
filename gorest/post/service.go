@@ -4,18 +4,20 @@ import (
 	"context"
 	"time"
 
+	"github.com/SGTYang/gorest/tree/dev/gorest/elastic"
+
 	"github.com/google/uuid"
 )
 
 type service struct {
-	storage post_storage.PostStorer
+	storage elastic.PostStorer
 }
 
 func (s service) create(ctx context.Context, req createRequest) (createResponse, error) {
 	id := uuid.New().String()
 	cr := time.Now().UTC()
 
-	doc := post_storage.Post{
+	doc := elastic.Post{
 		ID:        id,
 		Title:     req.Title,
 		Text:      req.Text,

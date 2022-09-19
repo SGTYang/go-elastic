@@ -4,13 +4,16 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+
+	"github.com/SGTYang/gorest/tree/dev/gorest/domain"
+	"github.com/SGTYang/gorest/tree/dev/gorest/elastic"
 )
 
 type Handler struct {
 	service service
 }
 
-func NewHandler(storage storage.PostStorer) Handler {
+func NewHandler(storage elastic.PostStorer) Handler {
 	return Handler{
 		service: service{storage: storage},
 	}

@@ -4,15 +4,15 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/SGTYang/gorest/elasticsearch"
-	"github.com/SGTYang/gorest/post"
+	"github.com/SGTYang/gorest/tree/dev/gorest/elastic"
+	"github.com/SGTYang/gorest/tree/dev/gorest/post"
 
 	"github.com/julienschmidt/httprouter"
 )
 
 func main() {
 	// Bootstrap elasticsearch.
-	elastic, err := elasticsearch.New([]string{"http://0.0.0.0:9200"})
+	elastic, err := elastic.New([]string{"http://0.0.0.0:9200"})
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -21,13 +21,13 @@ func main() {
 	}
 
 	// Bootstrap storage.
-	storage, err := elasticsearch.NewPostStorage(*elastic)
+	storage, err := elastic.NewPostStorage(*elastic)
 	if err != nil {
 		log.Fatalln(err)
 	}
 
 	// Bootstrap API.
-	postAPI := post.New(storage)
+	postAPI := post.NewHandler(storage)
 
 	// Bootstrap HTTP router.
 	router := httprouter.New()
