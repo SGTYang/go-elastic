@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/SGTYang/gorest/tree/dev/gorest/elastic"
+	"github.com/SGTYang/gorest/gorest/elastic"
 
 	"github.com/google/uuid"
 )

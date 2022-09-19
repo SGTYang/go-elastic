@@ -5,8 +5,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/SGTYang/gorest/tree/dev/gorest/domain"
-	"github.com/SGTYang/gorest/tree/dev/gorest/elastic"
+	"github.com/SGTYang/gorest/gorest/domain"
+	"github.com/SGTYang/gorest/gorest/elastic"
 )
 
 type Handler struct {

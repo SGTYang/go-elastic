@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/SGTYang/gorest/tree/dev/gorest/elastic"
-	"github.com/SGTYang/gorest/tree/dev/gorest/post"
+	"github.com/SGTYang/gorest/gorest/elastic"
+	"github.com/SGTYang/gorest/gorest/post"
 
 	"github.com/julienschmidt/httprouter"
 )
